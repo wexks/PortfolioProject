@@ -116,3 +116,46 @@ header nav a {
     flex-direction: column;
   }
 }
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.1); /* Эффект стекла */
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  max-width: 400px;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.auth-card h2 { margin-bottom: 20px; text-align: center; }
+
+.auth-form { display: flex; flex-direction: column; gap: 15px; }
+
+.auth-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+.auth-btn {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #333;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-btn:hover { background: #555; }

@@ -1,30 +1,32 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
-  const [email, setEmail] = useState("");
-  const { register } = useContext(AuthContext);
+  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  const handleRegister = (e) => {
     e.preventDefault();
-    register(email);
-    navigate("/profile");
-  }
+    // Имитация регистрации: сохраняем данные в localStorage
+    localStorage.setItem('user', JSON.stringify(formData)); 
+    alert('Регистрация успешна!');
+    navigate('/login'); // Переходим на вход
+  };
 
   return (
-    <>
-      <h1>Register</h1>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button type="submit">Register</button>
-      </form>
-    </>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Регистрация</h2>
+        <form className="auth-form" onSubmit={handleRegister}>
+          <input type="text" placeholder="Имя" required 
+            onChange={(e) => setFormData({...formData, name: e.target.value})} />
+          <input type="email" placeholder="Email" required 
+            onChange={(e) => setFormData({...formData, email: e.target.value})} />
+          <input type="password" placeholder="Пароль" required 
+            onChange={(e) => setFormData({...formData, password: e.target.value})} />
+          <button type="submit" className="auth-btn">Создать аккаунт</button>
+        </form>
+      </div>
+    </div>
   );
 }
