@@ -1,0 +1,16 @@
+.home-container {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(to right, #f4d0e4, #700505);
+  font-family: Arial, sans-serif;
+  color: #000000;
+}
+
+.home-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.home-container p {
+  font-size: 1.2rem;
+}
