@@ -1,5 +1,4 @@
 import myPhoto from "../assets/me1.jpg";
-
 export default function Home() {
   return (
     <div className="page-content">

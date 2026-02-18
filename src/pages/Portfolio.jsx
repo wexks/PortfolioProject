@@ -1,17 +1,51 @@
-import React from "react";
-import "../styles/portfolio.css";
+import { useState } from "react";
 
 export default function Portfolio() {
-  return (
-    <section className="portfolio">
-      <h1 className="portfolio-title">Мои проекты</h1>
+  const items = [
+    { id: 1, title: "Проект A", category: "Web" },
+    { id: 2, title: "Проект B", category: "Design" },
+    { id: 3, title: "Проект C", category: "Web" },
+  ];
 
-      <div className="projects-container">
-        <div className="project-card coming-soon">
-          <h2>Скоро здесь будут проекты 🚀</h2>
-          <p>Я работаю над новыми проектами и скоро добавлю их сюда!</p>
-        </div>
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("all");
+
+  const filteredItems = items
+    .filter(item => category === "all" || item.category === category)
+    .filter(item => item.title.toLowerCase().includes(search.toLowerCase()));
+
+  return (
+    <div>
+      <h2>Мои проекты</h2>
+
+      <input
+        type="text"
+        placeholder="Поиск проекта"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+
+      <div style={{ margin: "10px 0" }}>
+        <button onClick={() => setCategory("all")}>Все</button>
+        <button onClick={() => setCategory("Web")}>Web</button>
+        <button onClick={() => setCategory("Design")}>Design</button>
       </div>
-    </section>
+
+      <div>
+        {filteredItems.map(item => (
+          <div
+            key={item.id}
+            style={{
+              border: "1px solid #ccc",
+              margin: "5px",
+              padding: "5px",
+              borderRadius: "5px",
+            }}
+          >
+            {item.title} — {item.category}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
