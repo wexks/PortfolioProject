@@ -17,7 +17,6 @@ export default function App() {
     <div className="app">
       <Header />
 
-      {/* Контент по центру страницы */}
       <main className="page-content">
         <Routes>
           <Route path="/" element={<Home />} />

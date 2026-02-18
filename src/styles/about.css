@@ -5,11 +5,10 @@
   font-family: Arial, sans-serif;
 }
 
-/* === Фото + Обо мне в ряд === */
 .about-hero {
   display: flex;
   align-items: center;
-  gap: 40px; /* расстояние между фото и текстом */
+  gap: 40px;
   margin-bottom: 50px;
 }
 
@@ -23,10 +22,9 @@
 }
 
 .about-info {
-  flex: 1; /* чтобы текст занимал оставшееся место */
+  flex: 1; 
 }
 
-/* === Квадратные окошки === */
 .about-windows {
   display: flex;
   flex-wrap: wrap;
@@ -38,7 +36,7 @@
   background-color: #f5f5f5;
   border-radius: 16px;
   padding: 20px;
-  flex: 1 1 30%; /* 3 карточки в ряд на большом экране */
+  flex: 1 1 30%; 
   min-width: 250px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
@@ -53,7 +51,6 @@
   color: #333;
 }
 
-/* Адаптив для мобильных */
 @media (max-width: 768px) {
   .about-hero {
     flex-direction: column;

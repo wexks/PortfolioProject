@@ -4,7 +4,6 @@ import myPhoto from "../assets/me2.jpg";
 export default function About() {
   return (
     <section className="about">
-      {/* === Фото + Обо мне === */}
       <div className="about-hero">
         <div className="about-photo">
           <img src={myPhoto} alt="My Photo" />
@@ -23,7 +22,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* === Квадратные окошки про себя === */}
       <section className="about-windows">
         <div className="window-card">
           <h3>О себе</h3>

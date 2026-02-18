@@ -1,16 +1,29 @@
-export default function Profile() {
-  const user = JSON.parse(localStorage.getItem("user"));
+import React, { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import "../styles/profile.css";
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    window.location.href = "/login";
-  };
+export default function Profile() {
+  const { user, logout } = useContext(AuthContext);
+
+  if (!user) {
+    return (
+      <div className="profile-empty">
+        <p>Вы не авторизованы. Пожалуйста, войдите или зарегистрируйтесь.</p>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <h1>Profile</h1>
-      {user ? <p>Email: {user.email}</p> : <p>No user found</p>}
-      <button onClick={handleLogout}>Logout</button>
+    <div className="profile-page">
+      <div className="profile-card">
+        <h2>Это ваш профиль</h2>
+        <p>Имя: {user.name}</p>
+        <p>📧 Почта: {user.email}</p>
+
+        <button className="btn-logout" onClick={logout}>
+          Выйти
+        </button>
+      </div>
     </div>
   );
 }

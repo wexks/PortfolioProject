@@ -7,10 +7,10 @@ export default function Register() {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    // Имитация регистрации: сохраняем данные в localStorage
+    
     localStorage.setItem('user', JSON.stringify(formData)); 
     alert('Регистрация успешна!');
-    navigate('/login'); // Переходим на вход
+    navigate('/login'); 
   };
 
   return (

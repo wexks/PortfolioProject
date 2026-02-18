@@ -14,8 +14,7 @@ export default function Home() {
         <div className="hero-content">
           <h1 className="hero-name">Айым Оспанова</h1>
           <p className="hero-text">
-            Я начинающий Frontend-разработчик. Делаю сайты на React, работаю с
-            маршрутизацией, формами, LocalStorage и создаю адаптивный дизайн.
+            Я начинающий Frontend-разработчик. Создаю сайты на React и делаю их удобными и красивыми для пользователей.
           </p>
 
           <div className="hero-actions">
