@@ -1,16 +1,96 @@
-.home-container {
-  text-align: center;
-  padding: 40px;
-  background: linear-gradient(to right, #f4d0e4, #700505);
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   font-family: Arial, sans-serif;
-  color: #000000;
 }
 
-.home-container h1 {
-  font-size: 2.5rem;
+/* === Hero === */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.hero-photo img {
+  width: 250px;        /* средний размер */
+  height: 250px;       /* квадратное фото */
+  object-fit: cover;
+  border-radius: 50%;  /* круглая форма */
+  border: 3px solid #0070f3;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-name {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero-text {
+  font-size: 1rem;
+  line-height: 1.5;
   margin-bottom: 20px;
 }
 
-.home-container p {
-  font-size: 1.2rem;
+.hero-actions .btn {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #0070f3;
+}
+
+.btn-light {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* === Секция навыков === */
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #f5f5f5;
+  border-radius: 16px;
+  padding: 20px;
+  flex: 1 1 250px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #0070f3;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }

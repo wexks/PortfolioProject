@@ -1,6 +1,8 @@
-import './styles/main.css';
+import "./styles/main.css";
 import { Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
 
 import Home from "./pages/Home";
@@ -12,24 +14,30 @@ import Profile from "./pages/Profile";
 
 export default function App() {
   return (
-    <>
+    <div className="app">
       <Header />
-      <div className="page-content">
+
+      {/* Контент по центру страницы */}
+      <main className="page-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
-
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
-          <Route path="/profile" element={
-            <PrivateRoute>
-              <Profile />
-            </PrivateRoute>
-          }/>
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
         </Routes>
-      </div>
-    </>
+      </main>
+
+      <Footer />
+    </div>
   );
 }
+

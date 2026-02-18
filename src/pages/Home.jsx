@@ -1,23 +1,54 @@
-import Hero from '../components/Hero';
-
-const infoData = [
-  { id: 1, title: 'Мои навыки', text: 'React, JavaScript, HTML/CSS' },
-  { id: 2, title: 'Проекты', text: 'Интернет-магазины, Портфолио' },
-  { id: 3, title: 'Опыт', text: '2 года разработки интерфейсов' }
-];
+import myPhoto from "../assets/me1.jpg";
 
 export default function Home() {
   return (
-    <div>
-      <Hero />
-      <div className="info-grid">
-        {infoData.map(item => (
-          <div key={item.id} className="info-card">
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
+    <div className="page-content">
+      <div className="hero">
+        <div className="hero-photo">
+          <img
+            src={myPhoto}
+            alt="Айым Оспанова"
+          />
+        </div>
+
+        <div className="hero-content">
+          <h1 className="hero-name">Айым Оспанова</h1>
+          <p className="hero-text">
+            Я начинающий Frontend-разработчик. Делаю сайты на React, работаю с
+            маршрутизацией, формами, LocalStorage и создаю адаптивный дизайн.
+          </p>
+
+          <div className="hero-actions">
+            <a className="btn btn-primary" href="/portfolio">
+              Смотреть проекты
+            </a>
+            <a className="btn btn-light" href="/about">
+              Обо мне
+            </a>
           </div>
-        ))}
+        </div>
       </div>
+
+      <section className="section">
+        <h2 className="section-title">Мои навыки</h2>
+
+        <div className="cards">
+          <div className="card">
+            <h3>React</h3>
+            <p>Компоненты, props, useState, useEffect</p>
+          </div>
+
+          <div className="card">
+            <h3>React Router</h3>
+            <p>Страницы, навигация, защищённые маршруты</p>
+          </div>
+
+          <div className="card">
+            <h3>LocalStorage</h3>
+            <p>Регистрация, вход, сохранение сессии</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

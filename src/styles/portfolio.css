@@ -1,0 +1,44 @@
+.portfolio {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  min-height: 80vh;
+}
+
+.portfolio-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.projects-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.project-card {
+  background-color: #fff;
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.coming-soon h2 {
+  font-size: 1.5rem;
+  color: #ff6b6b;
+  margin-bottom: 15px;
+}
+
+.coming-soon p {
+  font-size: 1rem;
+  color: #555;
+}
