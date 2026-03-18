@@ -1,28 +1,40 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; // 1. Импортируем axios
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext); // Это функция из твоего контекста
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => { // 2. Добавляем async
     e.preventDefault();
 
-    const savedUser = JSON.parse(localStorage.getItem('user'));
+    try {
+      // 3. Делаем запрос на бэкенд (порт 5001)
+      const response = await axios.post('http://localhost:5001/api/users/login', {
+        email,
+        password
+      });
 
-    if (!savedUser) {
-      alert('Пользователь не найден. Зарегистрируйтесь!');
-      return;
-    }
+      // 4. Если всё успешно, сервер пришлет { token, user } (или только token)
+      const data = response.data;
+      
+      // Сохраняем токен для будущих запросов к проектам
+      localStorage.setItem('token', data.token);
 
-    if (email === savedUser.email && password === savedUser.password) {
-      login(savedUser); 
+      // Вызываем функцию логина из контекста, чтобы приложение "узнало" юзера
+      login(data.user || { email }); 
+      
+      alert('Вход выполнен успешно!');
       navigate('/profile'); 
-    } else {
-      alert('Неверный email или пароль');
+      
+    } catch (error) {
+      // 5. Обработка ошибок (неверный пароль или email)
+      console.error('Ошибка входа:', error.response?.data);
+      alert(error.response?.data?.message || 'Неверный email или пароль');
     }
   };
 
