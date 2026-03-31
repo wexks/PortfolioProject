@@ -1,18 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Portfolio() {
-  const items = [
-    { id: 1, title: "Проект A", category: "Web" },
-    { id: 2, title: "Проект B", category: "Design" },
-    { id: 3, title: "Проект C", category: "Web" },
-  ];
-
+  const [projects, setProjects] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
 
-  const filteredItems = items
+  // загрузка проектов с backend
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async () => {
+    try {
+      const res = await axios.get("http://localhost:5001/api/projects");
+      setProjects(res.data);
+    } catch (err) {
+      console.error("Ошибка загрузки проектов", err);
+    }
+  };
+
+  // фильтрация
+  const filteredItems = projects
     .filter(item => category === "all" || item.category === category)
-    .filter(item => item.title.toLowerCase().includes(search.toLowerCase()));
+    .filter(item =>
+      item.title.toLowerCase().includes(search.toLowerCase())
+    );
 
   return (
     <div>
@@ -34,7 +47,7 @@ export default function Portfolio() {
       <div>
         {filteredItems.map(item => (
           <div
-            key={item.id}
+            key={item._id}
             style={{
               border: "1px solid #ccc",
               margin: "5px",
