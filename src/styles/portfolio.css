@@ -1,44 +1,113 @@
-.portfolio {
-  padding: 50px 20px;
-  text-align: center;
-  background-color: #f9f9f9;
-  min-height: 80vh;
+/* Основной контейнер */
+.portfolio-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
 }
 
-.portfolio-title {
+.portfolio-container h2 {
+  text-align: center;
+  color: #2d3436;
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color: #333;
 }
 
-.projects-container {
+/* Форма добавления - теперь это аккуратная панель сверху */
+.add-project-form {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 15px;
+  align-items: center;
+}
+
+.add-project-form input, .add-project-form textarea {
+  padding: 12px 16px;
+  border: 1px solid #dfe6e9;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+}
+
+.add-project-form button {
+  background: #00b894;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-project-form button:hover { background: #00a887; transform: translateY(-2px); }
+
+/* Поиск и фильтры */
+.filters-section {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 
-.project-card {
-  background-color: #fff;
-  padding: 30px 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+.search-input {
   width: 300px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 1px solid #dfe6e9;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+.filter-btn {
+  margin-left: 10px;
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid #00b894;
+  background: transparent;
+  color: #00b894;
+  cursor: pointer;
 }
 
-.coming-soon h2 {
-  font-size: 1.5rem;
-  color: #ff6b6b;
-  margin-bottom: 15px;
+.filter-btn.active { background: #00b894; color: white; }
+
+/* СЕТКА ПРОЕКТОВ - то, чего не хватало на скриншоте */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
 }
 
-.coming-soon p {
-  font-size: 1rem;
-  color: #555;
+/* КАРТОЧКА ПРОЕКТА */
+.project-card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f1f2f6;
 }
+
+.project-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+
+.category-tag {
+  color: #636e72;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.project-card h3 { margin: 0 0 12px 0; color: #2d3436; font-size: 1.4rem; }
+.project-card p { color: #636e72; line-height: 1.6; flex-grow: 1; margin-bottom: 20px; }
+
+/* Кнопки в карточке */
+.actions { display: flex; gap: 10px; }
+.btn-edit { background: #f1f2f6; color: #2d3436; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; flex: 1; }
+.btn-delete { background: #fff0f0; color: #ff7675; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; flex: 1; }
