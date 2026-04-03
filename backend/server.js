@@ -2,13 +2,10 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-// УБРАЛИ кастомный путь
-console.log("dotenv loaded", process.env.MONGO_URI);
-
 const connectDB = require("./config/db");
 
-// ❗ ВРЕМЕННО ОТКЛЮЧАЕМ БАЗУ
-// connectDB();
+// 🔥 Подключение к БД
+connectDB();
 
 const app = express();
 
@@ -26,12 +23,14 @@ app.use((req, res, next) => {
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/projects", require("./routes/projectRoutes"));
 
-// Тест
+// Тестовый эндпоинт
 app.get("/test", (req, res) => {
   res.json({ message: "Server is working!" });
 });
 
-// ❗ ТОЛЬКО PORT из Railway
-const PORT = process.env.PORT;
+// ✅ ВАЖНО: PORT с fallback
+const PORT = process.env.PORT || 5001;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});
