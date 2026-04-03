@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 
 const connectDB = require("./config/db");
@@ -19,30 +20,28 @@ app.use((req, res, next) => {
   next();
 });
 
-// Роуты
+// Роуты API
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/projects", require("./routes/projectRoutes"));
 
-// Тестовый эндпоинт
+// Тест
 app.get("/test", (req, res) => {
   res.json({ message: "Server is working!" });
 });
 
-// ✅ ВАЖНО: PORT с fallback
+// 🔥 ПУТЬ К dist (ФИКС)
+const distPath = path.join(process.cwd(), "dist");
+
+// Отдаём фронт
+app.use(express.static(distPath));
+
+app.use((req, res) => {
+  res.sendFile(path.join(distPath, "index.html"));
+});
+
+// PORT
 const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
-});
-const path = require("path");
-
-app.use(express.static(path.join(__dirname, "../dist")));
-
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../dist", "index.html"));
-});
-app.use(express.static(path.join(__dirname, "../dist")));
-
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../dist", "index.html"));
 });
