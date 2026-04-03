@@ -5,12 +5,12 @@ require("dotenv").config();
 
 const connectDB = require("./config/db");
 
+const app = express();
+
 // 🔥 Подключение к БД
 connectDB();
 
-const app = express();
-
-// CORS
+// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Роуты API
+// API роуты
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/projects", require("./routes/projectRoutes"));
 
@@ -29,13 +29,13 @@ app.get("/test", (req, res) => {
   res.json({ message: "Server is working!" });
 });
 
-// 🔥 ПУТЬ К dist (ФИКС)
-const distPath = path.join(process.cwd(), "dist");
+// 🔥 СТАТИКА (ФРОНТ)
+const distPath = path.resolve(__dirname, "../dist");
 
-// Отдаём фронт
 app.use(express.static(distPath));
 
-app.use((req, res) => {
+// 👉 ВАЖНО: отдаём index.html для всех остальных запросов
+app.get("*", (req, res) => {
   res.sendFile(path.join(distPath, "index.html"));
 });
 
