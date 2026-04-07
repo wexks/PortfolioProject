@@ -31,7 +31,7 @@ export default function Register() {
       setLoading(true);
 
       const response = await axios.post(
-        'http://localhost:5001/api/users/register',
+        'http://https://portfolioproject-production-7c32.up.railway.app/api/users/register',
         formData
       );
 

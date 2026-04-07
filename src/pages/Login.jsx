@@ -14,7 +14,7 @@ export default function Login() {
 
     try {
       // 3. Делаем запрос на бэкенд (порт 5001)
-      const response = await axios.post('http://localhost:5001/api/users/login', {
+      const response = await axios.post('https://portfolioproject-production-7c32.up.railway.app/api/users/login', {
         email,
         password
       });

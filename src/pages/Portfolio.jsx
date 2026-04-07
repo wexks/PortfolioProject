@@ -25,7 +25,7 @@ export default function Portfolio() {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/api/projects");
+      const res = await axios.get("http://https://portfolioproject-production-7c32.up.railway.app/api/projects");
       setProjects(res.data);
     } catch (err) {
       console.error("Ошибка при загрузке:", err);
@@ -38,7 +38,7 @@ export default function Portfolio() {
     
     try {
       await axios.post(
-        "http://localhost:5001/api/projects",
+        "http://https://portfolioproject-production-7c32.up.railway.app/api/projects",
         { 
           title: newTitle, 
           description: newDescription, 
@@ -62,7 +62,7 @@ export default function Portfolio() {
   const handleDelete = async (id) => {
     if (!window.confirm("Удалить проект?")) return;
     try {
-      await axios.delete(`http://localhost:5001/api/projects/${id}`, {
+      await axios.delete(`http://https://portfolioproject-production-7c32.up.railway.app/api/projects/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchProjects();
@@ -83,7 +83,7 @@ export default function Portfolio() {
   const handleUpdate = async (id) => {
     try {
       await axios.put(
-        `http://localhost:5001/api/projects/${id}`,
+        `http://https://portfolioproject-production-7c32.up.railway.app/api/projects/${id}`,
         { 
           title: editTitle, 
           description: editDescription, 
